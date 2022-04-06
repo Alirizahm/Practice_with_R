@@ -1,0 +1,45 @@
+```{r}
+library(tidyverse)
+```
+
+```{r}
+ames <- read.csv('train.csv')
+```
+
+```{r}
+glimpse(ames)
+```
+
+1. Count of one categorical feature
+```{r}
+ames %>%
+  count(HouseStyle) %>%
+  ggplot(aes(x = reorder(HouseStyle, n), y = n)) +
+  geom_bar(stat = 'identity',  fill = "coral", alpha = 0.7, col='black') +
+  geom_label(aes(label = n)) +
+  labs(title = "Count of HouseStyle",
+       x = "HouseStyle",
+       y = "Count")
+```
+
+2. Distribution of one numeric feature
+```{r}
+ames %>%
+  ggplot(aes(x = SalePrice)) +
+  geom_density(aes(fill = factor(SaleCondition)), alpha = 0.2) + labs(title = " The Distribution of SalePrice Column with SaleCondition")
+```
+3. Categorical-numeric
+```{r}
+ames %>%
+  ggplot(aes(x = HouseStyle, y = SalePrice)) +
+  geom_boxplot(fill = 'Red', col='black') +
+  labs(title = "Categorical-numeric SalePrice and HouseStyle")
+```
+4. Numeric-numeric
+```{r}
+ames %>%
+  ggplot(aes(x = GrLivArea, y = LotArea, color = SalePrice)) +
+  geom_point() +
+  facet_wrap(~YrSold) + labs(title = "Numeric-numeric GrLivArea, LotArea and SalePrice with YrSold")
+```
+
