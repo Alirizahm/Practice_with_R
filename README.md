@@ -5,7 +5,7 @@ Author's : Aliriza Hamonangan Matondang
 ## Hello Everyone 👋
 I would like to show you about my practice with R
 
-## The List of practice with R 
+## The List of practices with R 
 - One Sample t-test
 - Data Cleaning
 - Visulization
